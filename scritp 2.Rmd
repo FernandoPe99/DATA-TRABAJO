@@ -1,0 +1,28 @@
+---
+title: "ESTAD2"
+output: html_document
+---
+
+```{r}
+library(rio)
+library(htmltab)
+library(stringr)
+linkEst="https://github.com/FernandoPe99/DATA-TRABAJO/raw/master/base%20de%20datos2.xlsx"
+Data=import(linkEst)
+View(Data)
+names(Data)
+str(Data)
+Data$AGUA=as.numeric(Data$AGUA)
+str(Data)
+Data$AGUA=round(Data$AGUA,4)
+head(Data)
+Data$DEPARTAMENTO=str_split(Data$DEPARTAMENTO,
+                          pattern = 'Departamento: ',
+                          simplify = T)[,2]
+head(Data)
+Data$DEPARTAMENTO[7]="Callao"
+head(Data)
+names(Data)[names(Data)=="AGUA"]="Porcentaje de acceso diario a agua"
+names(Data)
+```
+
